@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/images/logo-light-theme-fav.png" />
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <main id="main" class="dark w-full min-h-screen  sm:px-10 px-6  ">
+    <div class="max-w-[990px]  mx-auto pt-9 pb-[105px] flex flex-col gap-12">
+      <!-- Header -->
+      <header class="w-full flex items-center justify-between">
+        <div class="logo">
+          <img src="/images/logo-dark-theme.svg" alt="">
+        </div>
+        <button class="btn-toggle-theme cursor-pointer flex items-center justify-center h-11 w-11 rounded-xl text-xl">
+          <span class="material-symbols-rounded">
+            light_mode
+          </span>
+        </button>
+      </header>
+
+      <!--  -->
+      <div
+        class="mx-auto txt max-w-[510px] text-center text-[#f2f2f7] sm:text-[64px] text-[40px] font-bold  leading-[64px]">
+        Analyze
+        your
+        text in real-time.</div>
+      <!--  -->
+      <div class="flex flex-col gap-4">
+        <!-- textarea -->
+        <div class="flex flex-col">
+          <textarea name="chaine" id="chaine"
+            class="chaine h-[200px]  border-2  border-[#fe8159]   rounded-xl  p-5  outline-none"
+            autofocus>Hello World</textarea>
+          <div id="errorMessageContainer" class="mt-3 self-stretch justify-start items-center gap-2 inline-flex">
+            <span
+              class="material-symbols-rounded text-[#fe8159] text-sm font-light font-['Font Awesome 5 Pro'] leading-[18.20px]">
+              info
+            </span>
+            <div class="errorText text-[#fe8159] text-base font-normal font-['DM Sans'] leading-tight">Limit
+              reached! Your text
+              exceeds
+              300 characters.</div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="ckeckbox-container justify-between sm:items-center gap-6 flex flex-col sm:flex-row ">
+          <div class=" sm:justify-start sm:items-center gap-6 flex sm:flex-row flex-col">
+            <!--  -->
+            <div class="   justify-start items-center gap-2.5 inline-flex">
+              <button id="excludeSpaces" class=" w-6 h-6 relative rounded border flex items-center justify-center ">
+
+              </button>
+              <div class=" text-base font-normal  leading-tight">Exclude Spaces</div>
+            </div>
+            <!--  -->
+            <div class=" justify-start items-center gap-2.5 inline-flex">
+              <button id="limitChar" class="w-6 h-6 relative rounded border">
+
+              </button>
+              <div class=" text-base font-normal  leading-tight">Set Character Limit</div>
+            </div>
+          </div>
+          <div class="sm:text-right  text-base font-normal  leading-tight">Approx. reading
+            time: 0
+            minute</div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="flex flex-col">
+        <div class=" grid grid-cols-1 sm:grid-cols-3 gap-4 ">
+          <div
+            class="grow shrink basis-0 h-[150px] p-4 bg-[#d3a0fa] rounded-xl flex-col justify-center items-start gap-2 inline-flex overflow-hidden"
+            style="background-image: url('/images/pattern-character-count.svg'); background-repeat: no-repeat;background-position: right;">
+            <div id="charCount" class="self-stretch text-[#12131a] text-[64px] font-bold  leading-[64px]">00</div>
+            <div class="self-stretch text-[#12131a] text-xl font-normal  leading-7">Total Characters
+            </div>
+          </div>
+          <div
+            class="grow shrink basis-0 h-[150px] p-4 bg-[#ff9f00] rounded-xl flex-col justify-center items-center gap-2 inline-flex overflow-hidden"
+            style="background-image: url('/images/pattern-word-count.svg'); background-repeat: no-repeat;background-position: right;">
+            <div id="wordCount" class="self-stretch text-[#12131a] text-[64px] font-bold  leading-[64px]">00</div>
+            <div class="self-stretch text-[#12131a] text-xl font-normal  leading-7">Word Count</div>
+          </div>
+          <div
+            class="grow shrink basis-0 h-[150px] p-4 bg-[#fe8159] rounded-xl flex-col justify-center items-start gap-2 inline-flex overflow-hidden"
+            style="background-image: url('/images/pattern-sentence-count.svg'); background-repeat: no-repeat;background-position: right;">
+            <div id="sentenceCount" class="text-[#12131a] text-[64px] font-bold  leading-[64px]">00</div>
+            <div class="self-stretch text-[#12131a] text-xl font-normal  leading-7">Sentence Count</div>
+          </div>
+        </div>
+        <div class="mt-6 txt-secondary text-2xl font-semibold  leading-[31.20px]">Letter Density</div>
+        <div class="mt-5" id="density-chart"></div>
+        <div id="showMoreOrLess"
+          class=" max-w-max cursor-pointer txt-secondary mt-5 justify-start items-center gap-2 hidden">
+          <span class=" text-xl font-normal  ">See more</span>
+          <span class="material-symbols-rounded ">
+            keyboard_arrow_down
+          </span>
+        </div>
+        <div id="charEmpty" class="mt-5 txt-secondary text-base font-normal  leading-tight">No characters found. Start
+          typing to
+          see letter density.</div>
+      </div>
+    </div>
+  </main>
+  <script defer src="./src/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "DM Sans";
+  src: url(public\fonts\DMSans-Regular.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "DM Sans Bold";
+  src: url(/fonts/DMSans-Bold.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "DM Sans SemiBold";
+  src: url(public\fonts\DMSans-SemiBold.ttf) format("opentype");
+}
+
+main {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/images/bg-light-theme.png");
+
+  transition: background 0.4s ease;
+}
+
+main.dark {
+  background-image: url("/images/bg-dark-theme.png");
+}
+
+main .txt {
+  color: #12131a;
+  transition: color 0.3s ease;
+}
+
+main.dark .txt {
+  color: #f2f2f7;
+}
+
+main .chaine {
+  transition: color 0.3s ease, background 0.4s ease, border-color 0.4s ease;
+
+  color: #2a2b37;
+  background: #f2f2f7;
+  border-color: #e4e4ef;
+}
+
+main.dark .chaine {
+  color: #e4e4ef;
+  background: #21222c;
+  border-color: #2a2b37;
+}
+
+main .btn-toggle-theme {
+  background: #f2f2f7;
+  color: #12131a;
+  transition: all 0.3s ease;
+}
+
+main.dark .btn-toggle-theme {
+  background: #2a2b37;
+  color: white;
+}
+
+main .ckeckbox-container {
+  transition: all 0.3s ease;
+  color: #12131a;
+}
+
+main.dark .ckeckbox-container {
+  color: #e4e4ef;
+}
+
+main.dark .ckeckbox-container button {
+  transition: all 0.3s ease;
+  border-color: #12131a;
+}
+
+main.dark .ckeckbox-container button {
+  border-color: #e4e4ef;
+}
+
+main .txt-secondary {
+  transition: color 0.3s ease;
+
+  color: #12131a;
+}
+
+main.dark .txt-secondary {
+  color: #e4e4ef;
+}
+
+main .progress-bar {
+  transition: all 0.3s ease;
+  background-color: #f2f2f7;
+}
+
+main.dark .progress-bar {
+  background: #21222c;
+}
+
+#letter-density {
+  padding: 1rem;
+}
+
+.letter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  height: 0.75rem;
+  width: 100%;
+  margin: 0 0.5rem;
+}
+
+.filled-bar {
+  background-color: #a78bfa;
+  height: 100%;
+  border-radius: 9999px;
+}
+
+button.checked {
+  background: #a78bfa !important;
+  color: #12131a;
+}
+
+#errorMessageContainer {
+  display: none;
+}

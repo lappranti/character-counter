@@ -43,6 +43,9 @@ main .chaine {
   color: #2a2b37;
   background: #f2f2f7;
   border-color: #e4e4ef;
+
+  box-shadow: 0 2px 5px rgba(167, 139, 250, 0.1);
+  animation: pulse-shadow 2s infinite ease-in-out;
 }
 
 main.dark .chaine {
@@ -128,4 +131,16 @@ button.checked {
 
 #errorMessageContainer {
   display: none;
+}
+
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 2px 5px rgba(167, 139, 250, 0.1); /* Couleur atténuée */
+  }
+  50% {
+    box-shadow: 0 2px 6px rgba(167, 139, 250, 0.4); /* Couleur plus forte */
+  }
+  100% {
+    box-shadow: 0 2px 5px rgba(167, 139, 250, 0.1); /* Retour à la couleur initiale */
+  }
 }

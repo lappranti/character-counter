@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+  // Sélecteurs principaux
   const mainElement = document.getElementById("main");
   const btnToggleTheme = document.querySelector(".btn-toggle-theme");
   const logo = document.querySelector(".logo img");
@@ -17,16 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const excludeSpacesButton = document.getElementById("excludeSpaces");
   const setLimitButton = document.getElementById("limitChar");
 
-  let originalText = ""; // Sauvegarde de la chaîne originale
-  let excludeSpacesActive = false; // État du bouton Exclude Spaces
-  let setLimitActive = false; // État du bouton Set Character Limit
-  let isShowingMore = false; // Garde l'état pour "See more / See less"
+  // Variables d'état
+  let originalText = "";
+  let excludeSpacesActive = false;
+  let setLimitActive = false;
+  let isShowingMore = false;
 
   // Basculer entre les thèmes
   const toggleTheme = () => {
-    mainElement.classList.toggle("dark");
-    const isDark = mainElement.classList.contains("dark");
-
+    const isDark = mainElement.classList.toggle("dark");
     logo.src = isDark
       ? "/images/logo-dark-theme.svg"
       : "/images/logo-light-theme.svg";
@@ -36,14 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mettre à jour les statistiques de texte
   const updateCharStats = () => {
     const text = textarea.value;
-    const charCount = text.length;
-    const words = text.trim().split(/\s+/).filter(Boolean).length;
-    const sentences = text.split(/[.!?]/).filter(Boolean).length;
+    const charCountValue = text.length;
+    const wordCountValue = text.trim().split(/\s+/).filter(Boolean).length;
+    const sentenceCountValue = text.split(/[.!?]/).filter(Boolean).length;
 
-    charEmpty.style.display = charCount === 0 ? "block" : "none";
-    charTotal.textContent = charCount.toString().padStart(2, "0");
-    wordCount.textContent = words.toString().padStart(2, "0");
-    sentenceCount.textContent = sentences.toString().padStart(2, "0");
+    charEmpty.style.display = charCountValue === 0 ? "block" : "none";
+    charTotal.textContent = charCountValue.toString().padStart(2, "0");
+    wordCount.textContent = wordCountValue.toString().padStart(2, "0");
+    sentenceCount.textContent = sentenceCountValue.toString().padStart(2, "0");
   };
 
   // Mettre à jour la densité des lettres
@@ -92,56 +92,56 @@ document.addEventListener("DOMContentLoaded", function () {
     updateLetterDensity();
   };
 
-  // Fonction pour enlever les espaces
+  // Supprimer les espaces
   const removeSpaces = () => {
-    textarea.value = textarea.value.replace(/\s+/g, ""); // Supprimer les espaces
+    textarea.value = textarea.value.replace(/\s+/g, "");
   };
 
-  // Fonction pour appliquer la limite de caractères
+  // Appliquer la limite de caractères
   const limitCharacters = () => {
     if (textarea.value.length > 300) {
-      textarea.value = textarea.value.slice(0, 300); // Tronquer la chaîne à 300 caractères
+      textarea.value = textarea.value.slice(0, 300);
     }
   };
 
-  // Gestion du bouton Exclude Spaces
+  // Gestion des événements
   excludeSpacesButton.addEventListener("click", () => {
-    excludeSpacesActive = !excludeSpacesActive; // Basculer l'état
+    excludeSpacesActive = !excludeSpacesActive;
     excludeSpacesButton.classList.toggle("checked");
 
     if (excludeSpacesActive) {
-      originalText = textarea.value; // Sauvegarder le texte actuel
-      removeSpaces(); // Enlever les espaces
+      originalText = textarea.value;
+      removeSpaces();
       excludeSpacesButton.innerHTML = `<span class="text-[#12131a] material-symbols-rounded text-sx">check</span>`;
     } else {
-      textarea.value = originalText; // Restaurer le texte original
+      textarea.value = originalText;
       excludeSpacesButton.innerHTML = "";
     }
+
+    updateCharStats();
+    updateLetterDensity();
   });
 
-  // Gestion du bouton Set Character Limit
   setLimitButton.addEventListener("click", () => {
-    setLimitActive = !setLimitActive; // Basculer l'état
+    setLimitActive = !setLimitActive;
     setLimitButton.classList.toggle("checked");
 
     if (setLimitActive) {
-      originalText = textarea.value; // Sauvegarder le texte actuel
-      limitCharacters(); // Appliquer la limite
+      originalText = textarea.value;
+      limitCharacters();
       setLimitButton.innerHTML = `<span class="text-[#12131a] material-symbols-rounded text-sx">check</span>`;
     } else {
-      textarea.value = originalText; // Restaurer le texte original
+      textarea.value = originalText;
       setLimitButton.innerHTML = "";
     }
+
+    updateCharStats();
+    updateLetterDensity();
   });
 
-  // Événement d'entrée pour actualiser la chaîne en temps réel
   textarea.addEventListener("input", () => {
-    if (excludeSpacesActive) {
-      removeSpaces(); // Maintenir l'état sans espaces
-    }
-    if (setLimitActive) {
-      limitCharacters(); // Maintenir la limite
-    }
+    if (excludeSpacesActive) removeSpaces();
+    if (setLimitActive) limitCharacters();
     updateCharStats();
     updateLetterDensity();
   });
